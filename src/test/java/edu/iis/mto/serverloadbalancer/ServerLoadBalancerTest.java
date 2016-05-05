@@ -3,6 +3,8 @@ package edu.iis.mto.serverloadbalancer;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static edu.iis.mto.serverloadbalancer.CurrentLoadOfServerMatcher.*;
+import static edu.iis.mto.serverloadbalancer.ServerBuilder.*;
 
 import org.hamcrest.Matcher;
 import org.junit.Test;
@@ -23,9 +25,7 @@ public class ServerLoadBalancerTest {
 	}
 
 
-	private Matcher<? super Server> hasCurrentLoadOf(double expectedLoad) {
-		return new CurrentLoadOfServerMatcher(expectedLoad);
-	}
+
 
 	private void balancing(Server[] servers, Vm[] vms) {
 		new ServerLoadBalancer().balance(servers, vms);
@@ -44,9 +44,7 @@ public class ServerLoadBalancerTest {
 		return servers;
 	}
 
-	private ServerBuilder server() {
-		return new ServerBuilder();
-	}
+
 
 
 }

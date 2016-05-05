@@ -6,6 +6,7 @@ import org.hamcrest.TypeSafeMatcher;
 
 public class CurrentLoadOfServerMatcher extends  TypeSafeMatcher<Server>{
 
+	private static final double EPSILON = 0.01d;
 	private double expectedLoad;
 
 	public CurrentLoadOfServerMatcher(double expectedLoad) {
@@ -18,7 +19,15 @@ public class CurrentLoadOfServerMatcher extends  TypeSafeMatcher<Server>{
 
 	@Override
 	protected boolean matchesSafely(Server server) {
-		return expectedLoad == server.currentLoad || Math.abs(expectedLoad - server.currentLoad) < 0.01d;
+		return compareDoubles(expectedLoad, server.currentLoad);
+	}
+
+	private boolean compareDoubles(double d2, double d1) {
+		return d2 == d1 || Math.abs(d2 - d1) < EPSILON;
+	}
+	
+	public static Matcher<? super Server> hasCurrentLoadOf(double expectedLoad) {
+		return new CurrentLoadOfServerMatcher(expectedLoad);
 	}
 
 }
