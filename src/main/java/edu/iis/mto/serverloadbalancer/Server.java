@@ -23,7 +23,7 @@ public class Server {
 	}
 
 	public void addVm(Vm vm) {
-		currentLoad = loadOfVm(vm);
+		currentLoad += loadOfVm(vm);
 		vms.add(vm);
 		
 	}
