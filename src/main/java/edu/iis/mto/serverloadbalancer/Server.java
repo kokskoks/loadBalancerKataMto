@@ -21,6 +21,10 @@ public class Server {
 		currentLoad = vm.size / (double) capacity * MAXIMUM_LOAD;
 		
 	}
+
+	public int countVms() {
+		return 0;
+	}
 	
 	
 
