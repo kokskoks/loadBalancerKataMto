@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static edu.iis.mto.serverloadbalancer.CurrentLoadOfServerMatcher.*;
 import static edu.iis.mto.serverloadbalancer.ServerBuilder.*;
 import static edu.iis.mto.serverloadbalancer.VmBuilder.*;
+import static edu.iis.mto.serverloadbalancer.ServerVmsCountMatcher.*;
 
 import org.hamcrest.Matcher;
 import org.junit.Test;
@@ -65,10 +66,7 @@ public class ServerLoadBalancerTest {
 
 
 
-	private Matcher<? super Server> hasAVmsCountOf(int expectedCountOfVms) {
-		
-		return new ServerVmsCountMatcher(expectedCountOfVms);
-	}
+
 
 	private Vm[] aVmsListWith(Vm... vms) {
 		return vms;
