@@ -18,6 +18,11 @@ public class CurrentLoadOfServerMatcher extends  TypeSafeMatcher<Server>{
 	}
 
 	@Override
+	protected void describeMismatchSafely(Server item, Description desc) {
+		desc.appendText("a server with load of ").appendValue(item.currentLoad);
+	}
+	
+	@Override
 	protected boolean matchesSafely(Server server) {
 		return compareDoubles(expectedLoad, server.currentLoad);
 	}
